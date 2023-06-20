@@ -1,11 +1,9 @@
-// import { PropTypes } from 'prop-types';
+
 import { Formik } from 'formik';
 import { SearchbarHeader, SearchForm, SubmitButton, SubmitLabel, Input } from 'components/Searchbar/Searchbar.styled';
 import { AiOutlineSearch as SearchIcon } from 'react-icons/ai';
 
-// const InitialValues = {
-//     searchQuery: '',
-// }
+
 
 
 export const SearchbarForm = ({ onSubmit }) => {

@@ -18,7 +18,7 @@ export class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.page !== this.state.page && prevState.query === this.state.query) {
+    if (this.state.query !== 0 && prevState.page !== this.state.page && prevState.query !== this.state.query) {
       this.setState({
         isLoading: true
       });
@@ -31,19 +31,24 @@ export class App extends Component {
       });
     }
   }
-  
+
   handleLoadMore = () => {
     this.setState(prevState => ({
       page: prevState.page + 1,
     }));
   };
-  
+
   handleSubmit = (searchQuery) => {
-    this.setState({
-      isLoading: true
-    });
+    if (searchQuery !== '') {
+      this.setState({
+        isLoading: true
+      })
+    };
 
     API.fetchImage(searchQuery, 1).then((response) => {
+      if (searchQuery === '') {
+        return
+      }
       this.setState({
         pictures: response.hits,
         query: searchQuery,
@@ -57,16 +62,16 @@ export class App extends Component {
   render() {
     return (
       <Container>
-        <SearchbarForm onSubmit={ this.handleSubmit } />
+        <SearchbarForm onSubmit={this.handleSubmit} />
         <ImageGallery items={this.state.pictures} />
-        { this.state.isLoading && <Loader /> }
-        { this.state.pictures.length < this.state.total && (
-          <Button onLoadMore={ this.handleLoadMore } />
+        {this.state.isLoading && <Loader />}
+        {this.state.pictures.length < this.state.total && (
+          <Button onLoadMore={this.handleLoadMore} />
         )}
-        { this.state.pictures.length === 0 && (<ErrorMessage>Nothing found =(</ErrorMessage>)}
+        {this.state.pictures.length === 0 && (<ErrorMessage>Nothing found =(</ErrorMessage>)}
       </Container>
     );
-}
+  }
 
 };
 
