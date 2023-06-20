@@ -10,3 +10,4 @@ export const fetchImage = async (query, page) => {
 
   return response.data;
 };
+//for check

@@ -18,10 +18,10 @@ export const OnLoadMoreButton = styled.button`
     font-weight: 500;
     width: 180px;
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.3),
-        0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+        0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
     &:hover,
     &:focus {
-        background-color: #3bde81;
+        background-color: #1bcde4};
 `;
 
 export const ButtonWrapp = styled.div`
