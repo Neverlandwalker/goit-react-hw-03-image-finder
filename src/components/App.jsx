@@ -18,7 +18,7 @@ export class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.query !== 0 && prevState.page !== this.state.page && prevState.query !== this.state.query) {
+    if ( prevState.page !== this.state.page && prevState.query === this.state.query) {
       this.setState({
         isLoading: true
       });
@@ -68,7 +68,7 @@ export class App extends Component {
         {this.state.pictures.length < this.state.total && (
           <Button onLoadMore={this.handleLoadMore} />
         )}
-        {this.state.pictures.length === 0 && (<ErrorMessage>Nothing found =(</ErrorMessage>)}
+        {this.state.pictures.length === 0 && (<ErrorMessage>Nothing found =</ErrorMessage>)}
       </Container>
     );
   }
